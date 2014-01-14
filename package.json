@@ -1,0 +1,29 @@
+{
+  "name": "ChatRoomInWebRTC",
+  "version": "1.0.0",
+  "description": "A simple chat room written based on PeerJS which is a good wrapper of webRTC techology",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/leftstick/ChatRoomInWebRTC.git"
+  },
+  "keywords": [
+    "PeerJS",
+    "chatroom",
+    "webRTC"
+  ],
+  "author": "howard.zuo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/leftstick/ChatRoomInWebRTC/issues"
+  },
+  "homepage": "https://github.com/leftstick/ChatRoomInWebRTC",
+  "devDependencies": {
+    "grunt": "~0.4.2",
+    "grunt-contrib-clean": "~0.5.0",
+    "grunt-template": "~0.2.2",
+    "grunt-contrib-copy": "~0.5.0",
+    "grunt-contrib-watch": "~0.5.3",
+    "grunt-contrib-connect": "~0.6.0",
+    "grunt-contrib-concat": "~0.3.0"
+  }
+}
