@@ -40,6 +40,9 @@ Chat.factory('PeerJS', ['Data',
                 peer = new Peer('leftstick-unique', {
                     key: 'm4lam1d6op28d7vi'
                 });
+                peer.on('open', function(){
+                    console.log("peerid", peer);
+                });
                 peer.on('connection', function(conn) {
                     conn.on('data', function(data) {
                         var msg = JSON.parse(data);
@@ -80,6 +83,9 @@ Chat.factory('PeerJS', ['Data',
             } else if (user.role === 'client') {
                 peer = new Peer({
                     key: 'm4lam1d6op28d7vi'
+                });
+                peer.on('open', function(){
+                    console.log("peerid", peer);
                 });
                 var conn = peer.connect('leftstick-unique');
                 connections.push(conn);

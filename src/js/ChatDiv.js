@@ -73,3 +73,22 @@ Chat.directive('cValidate', [
         };
     }
 ]);
+
+/**
+ * Directive, c-tooltip.
+ */
+Chat.directive('cTooltip', [
+
+    function() {
+        return {
+            restrict: 'A',
+            link: function(scope, element, attrs, controller) {
+                var placement = attrs.cTooltip;
+                element.tooltip({
+                    placement: placement,
+                    container: 'body'
+                });
+            }
+        };
+    }
+]);

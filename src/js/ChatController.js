@@ -1,8 +1,8 @@
 /*
  * The EntranceController
  */
-Chat.controller("EntranceController", ['$scope', '$location', 'Data', 'PeerJS',
-    function($scope, $location, Data, PeerJS) {
+Chat.controller("EntranceController", ['$scope', '$location', 'Data',
+    function($scope, $location, Data) {
         $scope.Load = function(partial) {
             Data.user({
                 nickname: $scope.nickname,
@@ -10,7 +10,6 @@ Chat.controller("EntranceController", ['$scope', '$location', 'Data', 'PeerJS',
             });
             $scope.status = 'hide';
             $location.path("/" + partial);
-
         };
     }
 ]);
@@ -18,17 +17,19 @@ Chat.controller("EntranceController", ['$scope', '$location', 'Data', 'PeerJS',
 /*
  * The HostController
  */
-Chat.controller("HostController", ['$scope', 'Data',
-    function($scope, Data) {
-        $scope.nickname = Data.user().nickname;
+Chat.controller("HostController", ['$scope', 'Data', 'PeerJS',
+    function($scope, Data, PeerJS) {
+        $scope.clients = Data.clients();
+        PeerJS.createPeer();
     }
 ]);
 
 /*
  * The ClientController
  */
-Chat.controller("ClientController", ['$scope',
-    function($scope) {
-
+Chat.controller("ClientController", ['$scope', 'Data', 'PeerJS',
+    function($scope, Data, PeerJS) {
+        $scope.clients = Data.clients();
+        PeerJS.createPeer();
     }
 ]);

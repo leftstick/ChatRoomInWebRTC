@@ -5,3 +5,7 @@
 .btn.entrance {
     width: 100px;
 }
+
+.messageQueue {
+   resize: none;
+}
