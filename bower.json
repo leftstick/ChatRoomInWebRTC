@@ -11,7 +11,7 @@
     "jquery": "2.0.3",
     "angular": "1.2.8",
     "bootstrap": "3.0.3",
-    "angular-route": "1.2.7",
+    "angular-route": "1.2.8",
     "peerjs": "0.3.7"
   }
 }

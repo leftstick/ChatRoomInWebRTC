@@ -8,7 +8,9 @@ Chat.controller("EntranceController", ['$scope', '$location', 'Data', 'PeerJS',
                 nickname: $scope.nickname,
                 role: $scope.nickname
             });
+            $scope.status = 'hide';
             $location.path("/" + partial);
+
         };
     }
 ]);
@@ -18,7 +20,7 @@ Chat.controller("EntranceController", ['$scope', '$location', 'Data', 'PeerJS',
  */
 Chat.controller("HostController", ['$scope', 'Data',
     function($scope, Data) {
-
+        $scope.nickname = Data.user().nickname;
     }
 ]);
 
