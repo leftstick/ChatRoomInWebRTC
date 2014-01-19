@@ -7,5 +7,10 @@
 }
 
 .messageQueue {
-   resize: none;
+   overflow: scroll;
+   height: 300px;
+   border-style: solid;
+   border-width: 1px;
+   border-radius: 5px;
+   border-color: gray;
 }

@@ -9,9 +9,11 @@
                     </ul>
                 </div>
                 <div class="col-md-8 col-lg-8 col-sm-8">
-                    <textarea class="form-control messageQueue disabled" rows="15"></textarea>
+                    <ul class="list-group messageQueue">
+                      <li class="list-group-item" ng-repeat="msg in messages"><span ng-bind="msg"></span></li>
+                    </ul>
                     <div class="input-group">
-                        <input type="email" class="form-control" placeholder="Type message...">
+                        <input type="text" ng-model="message" class="form-control" placeholder="Type message..." ng-keydown="send($event)">
                         <span class="input-group-addon" c-tooltip="bottom" title="Press Enter to send message!"><span class="glyphicon glyphicon-edit"></span></span>
                     </div>
                 </div>

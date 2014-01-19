@@ -15,7 +15,7 @@ module.exports = function(grunt) {
                 files: [{
                     expand: true,
                     cwd: 'bower_components/',
-                    src: ['jquery/jquery.js', 'bootstrap/dist/js/bootstrap.js', 'angular/angular.js', 'angular-route/angular-route.js', 'peerjs/peer.js'],
+                    src: ['underscore/underscore.js', 'jquery/jquery.js', 'bootstrap/dist/js/bootstrap.js', 'angular/angular.js', 'angular-route/angular-route.js', 'peerjs/peer.js'],
                     dest: 'build/libs/',
                     flatten: true
                 }, {
@@ -42,7 +42,7 @@ module.exports = function(grunt) {
             dev: {
                 options: {
                     data: {
-                        scripts: ['libs/jquery.js', 'libs/bootstrap.js', 'libs/angular.js', 'libs/angular-route.js', 'libs/peer.js', 'libs/all.js'],
+                        scripts: ['libs/underscore.js', 'libs/jquery.js', 'libs/bootstrap.js', 'libs/angular.js', 'libs/angular-route.js', 'libs/peer.js', 'libs/all.js'],
                         csss: ['css/bootstrap.css', 'css/bootstrap-theme.css', 'css/Chat.css']
                     }
                 },
