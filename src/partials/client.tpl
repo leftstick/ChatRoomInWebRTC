@@ -8,7 +8,7 @@
                         <li class="list-group-item" ng-repeat="client in clients"><span ng-bind="client.nickname"></span></li>
                     </ul>
                 </div>
-                <div class="col-md-8 col-lg-8 col-sm-8">
+                <div class="col-md-8 col-lg-8 col-sm-8" ng-show="hasAttendee">
                     <textarea class="form-control messageQueue" rows="15" c-message="messages"></textarea>
                     <div class="input-group">
                         <input type="text" ng-model="message" class="form-control" placeholder="Type message..." ng-keydown="send($event)">

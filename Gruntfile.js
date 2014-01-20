@@ -1,12 +1,26 @@
 module.exports = function(grunt) {
     grunt.initConfig({
         clean: {
-            dev: ['build']
+            all: ['build']
         },
         concat: {
             dev: {
                 files: {
                     'build/libs/all.js': ['src/js/Chat.js', 'src/js/*.js']
+                }
+            }
+        },
+        uglify: {
+            dist: {
+                files: {
+                    'build/libs/all.min.js': ['src/js/Chat.js', 'src/js/*.js']
+                }
+            }
+        },
+        cssmin: {
+            dist: {
+                files: {
+                    'build/css/Chat.min.css': ['src/**/*.css']
                 }
             }
         },
@@ -36,6 +50,27 @@ module.exports = function(grunt) {
                     src: ['**/*', '!**/*.tpl'],
                     dest: 'build/'
                 }]
+            },
+            dist: {
+                files: [{
+                    expand: true,
+                    cwd: 'bower_components/',
+                    src: ['underscore/underscore-min.js', 'underscore/underscore-min.map', 'jquery/jquery.min.js', 'jquery/jquery.min.map', 'bootstrap/dist/js/bootstrap.min.js', 'angular/angular.min.js', 'angular/angular.min.js.map', 'angular-route/angular-route.min.js', 'angular-route/angular-route.min.js.map', 'peerjs/peer.min.js'],
+                    dest: 'build/libs/',
+                    flatten: true
+                }, {
+                    expand: true,
+                    cwd: 'bower_components/',
+                    src: ['bootstrap/dist/fonts/*'],
+                    dest: 'build/fonts/',
+                    flatten: true
+                }, {
+                    expand: true,
+                    cwd: 'bower_components/',
+                    src: ['bootstrap/dist/css/*.min.css'],
+                    dest: 'build/css/',
+                    flatten: true
+                }]
             }
         },
         template: {
@@ -44,6 +79,21 @@ module.exports = function(grunt) {
                     data: {
                         scripts: ['libs/underscore.js', 'libs/jquery.js', 'libs/bootstrap.js', 'libs/angular.js', 'libs/angular-route.js', 'libs/peer.js', 'libs/all.js'],
                         csss: ['css/bootstrap.css', 'css/bootstrap-theme.css', 'css/Chat.css']
+                    }
+                },
+                files: [{
+                    expand: true,
+                    cwd: 'src/',
+                    src: ['**/*.tpl'],
+                    dest: 'build/',
+                    ext: '.html'
+                }]
+            },
+            dist: {
+                options: {
+                    data: {
+                        scripts: ['libs/underscore-min.js', 'libs/jquery.min.js', 'libs/bootstrap.min.js', 'libs/angular.min.js', 'libs/angular-route.min.js', 'libs/peer.min.js', 'libs/all.min.js'],
+                        csss: ['css/bootstrap.min.css', 'css/bootstrap-theme.min.css', 'css/Chat.min.css']
                     }
                 },
                 files: [{
@@ -81,6 +131,10 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-connect');
+    grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-contrib-cssmin');
 
-    grunt.registerTask('default', ['clean:dev', 'concat:dev', 'copy:dev', 'template:dev', 'connect:dev', 'watch:dev']);
+    grunt.registerTask('default', ['clean:all', 'concat:dev', 'copy:dev', 'template:dev', 'connect:dev', 'watch:dev']);
+
+    grunt.registerTask('dist', ['clean:all', 'uglify:dist', 'cssmin:dist', 'copy:dist', 'template:dist']);
 };

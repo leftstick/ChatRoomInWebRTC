@@ -19,10 +19,19 @@ Chat.controller("EntranceController", ['$scope', '$location', 'Data',
  */
 Chat.controller("HostController", ['$scope', 'Data', 'PeerJS',
     function($scope, Data, PeerJS) {
+        $scope.hasAttendee = false;
         $scope.clients = Data.clients();
         $scope.messages = Data.queue();
         $scope.nickname = Data.user().nickname;
         var peer = PeerJS.createHostPeer();
+
+        $scope.$watch('clients', function() {
+            if ($scope.clients.length > 0) {
+                $scope.hasAttendee = true;
+            } else {
+                $scope.hasAttendee = false;
+            }
+        }, true);
 
         $scope.send = function($event) {
             if ($event.keyCode === 13) {
@@ -38,10 +47,19 @@ Chat.controller("HostController", ['$scope', 'Data', 'PeerJS',
  */
 Chat.controller("ClientController", ['$scope', 'Data', 'PeerJS',
     function($scope, Data, PeerJS) {
+        $scope.hasAttendee = false;
         $scope.clients = Data.clients();
         $scope.messages = Data.queue();
         $scope.nickname = Data.user().nickname;
         var peer = PeerJS.createClientPeer();
+
+        $scope.$watch('clients', function() {
+            if ($scope.clients.length > 0) {
+                $scope.hasAttendee = true;
+            } else {
+                $scope.hasAttendee = false;
+            }
+        }, true);
 
         $scope.send = function($event) {
             if ($event.keyCode === 13 && $scope.message) {
