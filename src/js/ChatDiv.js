@@ -92,3 +92,29 @@ Chat.directive('cTooltip', [
         };
     }
 ]);
+
+/**
+ * Directive, c-message.
+ */
+Chat.directive('cMessage', [
+
+    function() {
+        return {
+            restrict: 'A',
+            link: function(scope, element, attrs, controller) {
+                var model = attrs.cMessage;
+                scope.$watch(model, function(newValue, oldValue) {
+                    if (newValue) {
+                        var txt = "";
+                        _.each(newValue, function(item){
+                            txt += item + "\n";
+                        });
+                        element.val(txt);
+                        element.scrollTop(element[0].scrollHeight);
+                        return;
+                    }
+                }, true);
+            }
+        };
+    }
+]);
