@@ -29,7 +29,7 @@ module.exports = function(grunt) {
                 files: [{
                     expand: true,
                     cwd: 'bower_components/',
-                    src: ['underscore/underscore.js', 'jquery/jquery.js', 'bootstrap/dist/js/bootstrap.js', 'angular/angular.js', 'angular-route/angular-route.js', 'peerjs/peer.js'],
+                    src: ['underscore/underscore.js', 'jquery/jquery.js', 'bootstrap/dist/js/bootstrap.js', 'angular/angular.js', 'angular-route/angular-route.js', 'angular-strap/dist/angular-strap.js', 'angular-strap/dist/angular-strap.tpl.js', 'peerjs/peer.js'],
                     dest: 'build/libs/',
                     flatten: true
                 }, {
@@ -55,7 +55,7 @@ module.exports = function(grunt) {
                 files: [{
                     expand: true,
                     cwd: 'bower_components/',
-                    src: ['underscore/underscore-min.js', 'underscore/underscore-min.map', 'jquery/jquery.min.js', 'jquery/jquery.min.map', 'bootstrap/dist/js/bootstrap.min.js', 'angular/angular.min.js', 'angular/angular.min.js.map', 'angular-route/angular-route.min.js', 'angular-route/angular-route.min.js.map', 'peerjs/peer.min.js'],
+                    src: ['underscore/underscore-min.js', 'underscore/underscore-min.map', 'jquery/jquery.min.js', 'jquery/jquery.min.map', 'bootstrap/dist/js/bootstrap.min.js', 'angular/angular.min.js', 'angular/angular.min.js.map', 'angular-route/angular-route.min.js', 'angular-route/angular-route.min.js.map', 'angular-strap/dist/angular-strap.min.js', 'angular-strap/dist/angular-strap.min.map', 'angular-strap/dist/angular-strap.tpl.min.js', 'peerjs/peer.min.js'],
                     dest: 'build/libs/',
                     flatten: true
                 }, {
@@ -77,7 +77,7 @@ module.exports = function(grunt) {
             dev: {
                 options: {
                     data: {
-                        scripts: ['libs/underscore.js', 'libs/jquery.js', 'libs/bootstrap.js', 'libs/angular.js', 'libs/angular-route.js', 'libs/peer.js', 'libs/all.js'],
+                        scripts: ['libs/underscore.js', 'libs/jquery.js', 'libs/bootstrap.js', 'libs/angular.js', 'libs/angular-route.js', 'libs/angular-strap.js', 'libs/angular-strap.tpl.js', 'libs/peer.js', 'libs/all.js'],
                         csss: ['css/bootstrap.css', 'css/bootstrap-theme.css', 'css/Chat.css']
                     }
                 },
@@ -92,7 +92,7 @@ module.exports = function(grunt) {
             dist: {
                 options: {
                     data: {
-                        scripts: ['libs/underscore-min.js', 'libs/jquery.min.js', 'libs/bootstrap.min.js', 'libs/angular.min.js', 'libs/angular-route.min.js', 'libs/peer.min.js', 'libs/all.min.js'],
+                        scripts: ['libs/underscore-min.js', 'libs/jquery.min.js', 'libs/bootstrap.min.js', 'libs/angular.min.js', 'libs/angular-route.min.js', 'libs/angular-strap.min.js', 'libs/angular-strap.tpl.min.js', 'libs/peer.min.js', 'libs/all.min.js'],
                         csss: ['css/bootstrap.min.css', 'css/bootstrap-theme.min.css', 'css/Chat.min.css']
                     }
                 },
@@ -108,7 +108,7 @@ module.exports = function(grunt) {
         watch: {
             dev: {
                 files: ['src/**/*'],
-                tasks: ['clean:dev', 'concat:dev', 'copy:dev', 'template:dev'],
+                tasks: ['clean:all', 'concat:dev', 'copy:dev', 'template:dev'],
                 options: {
                     livereload: true
                 }
